@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        window.GLOBAL_CONFIG = {
+            SCF_GATEWAY: "https://paddy.2841738015.workers.dev/",
+            SITE_NAME: "My Onedrive",
+            IS_CF: true
+        };
+        if (window.GLOBAL_CONFIG.SCF_GATEWAY.indexOf('workers') === -1) {
+            window.GLOBAL_CONFIG.SCF_GATEWAY += '/fodi/';
+            window.GLOBAL_CONFIG.IS_CF = false;
+        }
+    </script>
+    <title>FODI-Theme-Forest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href=" //at.alicdn.com/t/font_2047602_q3co298xob8.css">
+    <link rel="stylesheet" href=" https://www.paddylin.top/assets/css/font.css">
+    <link rel="stylesheet" href=" css/style.css">
+    <link rel="shortcut icon" href=" https://cdn.jsdelivr.net/gh/PaddyLin-xum/tuku@master/img/forest.png">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <script src="js/fodi.js"></script>
+    <script src="//s0.pstatp.com/cdn/expire-1-M/ionicons/4.5.6/ionicons.js"></script>
+    <script src="//s0.pstatp.com/cdn/expire-1-M/marked/0.6.2/marked.min.js"></script>
+    <script src="//s0.pstatp.com/cdn/expire-1-M/highlight.js/9.15.6/highlight.min.js"></script>
+    <link href="//s0.pstatp.com/cdn/expire-1-M/highlight.js/9.15.6/styles/github.min.css" rel="stylesheet" />
+    <link href="//s0.pstatp.com/cdn/expire-1-M/github-markdown-css/3.0.1/github-markdown.min.css" rel="stylesheet" />
+    <script src="//s0.pstatp.com/cdn/expire-1-M/jquery/3.4.0/jquery.min.js"></script>
+    <script src="//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <link href="//s0.pstatp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet" />
+</head>
+
+<body hidden="hidden">
+    <template id="tree-node-wrapper-template">
+        <div class="tree-node-wrapper">
+            <div class="tree-node">
+                <ion-icon></ion-icon>
+                <ion-icon></ion-icon>
+                <div class="tree-node-name"></div>
+            </div>
+        </div>
+    </template>
+    <template id="file-wrapper-templete">
+        <div class="row file-wrapper">
+            <div class="file">
+                <i class="iconfont icon-wenjianjia"></i>
+                <span class="name"></span>
+                <span class="time"></span>
+                <span class="size"></span>
+            </div>
+        </div>
+    </template>
+    <div class="loading-wrapper">
+        <div class="loading">Loading...</div>
+    </div>
+    <div class="header-wrapper">
+        <div class="header">
+            <ion-icon id="arrow-back" class="logo" name="arrow-back"></ion-icon>
+            <ion-icon id="arrow-forward" class="logo" name="arrow-forward"></ion-icon>
+            <ion-icon id="main-page" class="logo" name="folder"></ion-icon>
+            <div class="nav">
+                <span id="path">
+                </span>
+            </div>
+            <span class="site" id="nav-site">ONEDRIVE</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="right">
+                <div style="margin: 1rem 0px;border-bottom: 2px solid #f5f5f5;font-size: 20px;">
+                    <ul>
+                        <li style="margin: 10px">博客：<a href="https://www.paddylin.top">Paddy的博客</a>   🐷🐵🐟</li>
+                        <li style="margin: 10px">注意：需要的资源可以联系我，我尽量帮忙收集！！😎😎😎但我不是什么都会帮忙的，看心情哦！！😜😜😜</li>
+                        <li style="margin: 10px">VIP电影，音乐都可以哦！！！</li>
+                    </ul>
+                </div>
+                <div class="list-header">
+                    <div class="row">
+                        <div class="file">
+                            <span class="name">ITEMS</span>
+                            <span class="time">TIME</span>
+                            <span class="size">SIZE</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="file-list">
+                </div>
+                <div class="markdown-body">
+                    <div id="readme">
+                    </div>
+                </div>
+                <div class="preview">
+                    <div class="info">
+                        <div class="file-name"></div>
+                        <div class="btn download">下载</div>
+                        <div class="btn quote">引用</div>
+                        <div class="btn share">分享</div>
+                    </div>
+                    <div class="content"></div>
+                </div>
+                <div class="password-wrapper">
+                    <div class="password">
+                        <input type="password">
+                        <button>提交</button>
+                    </div>
+                </div>
+                <div style="margin: 1rem 0px;border-top: 2px solid #f5f5f5;font-size: 20px;">
+                    <ul>
+                    <li>本站资源仅供学习交流使用，不得用于任何商业用途；请遵守您所在国家的法律法规，任何非法行为由使用者自身承担。<a href="https://www.paddylin.top/about/">如有任何信息侵犯您的权益，请通知我，我会立即删除。</a></li>
+                    <li>Our resources are only for learning and communication, not for any commercial use. Please abide by the laws and regulations of your country, and any illegal behavior shall be borne by the user himself.<a href="https://www.paddylin.top/about/">If any information infringes your rights and interests, please inform me and I will delete it immediately. </a></li>
+                    </ul>
+                </div>
+                <footer class="footer">
+                    <div class="columns is-mobile is-centered">
+                        <div class="field is-grouped is-grouped-multiline">
+                            <div class="control">
+                                <div class="tags has-addons">
+                                    <a href="https://github.com/PaddyLin-xum/FODI-Theme-Forest" class="tag is-dark">FODI-Theme-Forest</a>
+                                    <span class="tag is-light"> MIT 
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
