@@ -3,3 +3,5 @@
 # 优点
 1. 可高度自定义
 2. 部署简单
+# License
+[MIT License](https://github.com/DesertsP/Valine-Admin/blob/master/LICENSE)
